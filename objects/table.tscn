@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dephrk2wl2d11"]
+
+[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_nuod6"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(205, -18, -19, 144, -203, 95, -207, 22, 19, -137, 192, -84)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -5)
+texture = ExtResource("1_nuod6")
+region_enabled = true
+region_rect = Rect2(391.696, 775.107, 396.771, 267.93)

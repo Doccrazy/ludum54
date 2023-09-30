@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cce0afbqa2gsr"]
+
+[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_1w6cw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odaqi"]
+radius = 59.0339
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_odaqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_1w6cw")
+region_enabled = true
+region_rect = Rect2(90.5939, 235.708, 153.731, 101.023)

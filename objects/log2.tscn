@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpubxgbptpg4m"]
+
+[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_h2mio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn0re"]
+size = Vector2(249.66, 49.2553)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -7)
+rotation = 0.367126
+shape = SubResource("RectangleShape2D_vn0re")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_h2mio")
+region_enabled = true
+region_rect = Rect2(414.137, 260.694, 260.228, 135.237)
