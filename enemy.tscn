@@ -56,5 +56,12 @@ remote_path = NodePath("../HealthBarNode")
 update_rotation = false
 update_scale = false
 
+[node name="WanderTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TentTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Collider" to="." method="_on_collider_body_entered"]
 [connection signal="body_exited" from="Collider" to="." method="_on_collider_body_exited"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="TentTimer" to="." method="_on_tent_timer_timeout"]

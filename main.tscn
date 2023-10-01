@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dcu4fdabbv2gx"]
+[gd_scene load_steps=31 format=3 uid="uid://dcu4fdabbv2gx"]
 
 [ext_resource type="Script" path="res://drawCurve.gd" id="1_l0nr8"]
 [ext_resource type="Script" path="res://StaticObjects.gd" id="2_dlj3h"]
@@ -18,8 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://6lyc3d3spd1p" path="res://objects/water_station.tscn" id="16_fur6k"]
 [ext_resource type="Script" path="res://SpawnPath.gd" id="17_7xfir"]
 [ext_resource type="PackedScene" uid="uid://naombmq55b7i" path="res://enemy.tscn" id="18_hopwh"]
+[ext_resource type="PackedScene" uid="uid://dkedg3rpu0n6m" path="res://tents/tent1.tscn" id="19_e6xwp"]
 [ext_resource type="PackedScene" uid="uid://baveohy1c7wdb" path="res://gate.tscn" id="19_fee1c"]
 [ext_resource type="Script" path="res://entry.gd" id="19_qromv"]
+[ext_resource type="PackedScene" uid="uid://cgbx1ko4uon3v" path="res://tents/tent2.tscn" id="20_bcymx"]
+[ext_resource type="PackedScene" uid="uid://s6tq18yecxab" path="res://tents/tent3.tscn" id="21_6sc28"]
+[ext_resource type="PackedScene" uid="uid://dh4garsampahr" path="res://tents/tent4.tscn" id="22_mcaeu"]
 
 [sub_resource type="Curve2D" id="Curve2D_c78jt"]
 _data = {
@@ -112,6 +116,7 @@ objects2 = Array[PackedScene]([ExtResource("4_jg1pg"), ExtResource("5_mlv06"), E
 objects3 = Array[PackedScene]([ExtResource("9_1g167"), ExtResource("16_fur6k")])
 objects4 = Array[PackedScene]([ExtResource("11_8sv34")])
 objects5 = Array[PackedScene]([ExtResource("10_pnj43")])
+tents = Array[PackedScene]([ExtResource("19_e6xwp"), ExtResource("20_bcymx"), ExtResource("21_6sc28"), ExtResource("22_mcaeu")])
 
 [node name="ClearArea" type="Area2D" parent="."]
 

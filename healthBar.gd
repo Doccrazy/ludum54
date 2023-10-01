@@ -10,4 +10,4 @@ func _process(delta: float):
 	if value < max_value * 0.7:
 		tint_progress = Color.YELLOW 
 	if value < max_value * 0.35:
-		tint_progress = Color.INDIAN_RED
+		tint_progress = Color.RED

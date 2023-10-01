@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh4garsampahr"]
+
+[ext_resource type="Texture2D" uid="uid://cfqlfifuauvsx" path="res://graphics/tents.svg" id="1_ogxuj"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-144, -5, 37, 76, 158, 3, -14, -65)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ogxuj")
+region_enabled = true
+region_rect = Rect2(409.884, 231.346, 381.691, 225.471)

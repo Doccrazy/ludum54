@@ -18,4 +18,4 @@ func _input(event):
 		for enemyArea in enemyAreas:
 			var enemy = enemyArea.get_parent()
 			if enemy.pathDone:
-				enemy.proceedPath()
+				enemy.proceedIn()
