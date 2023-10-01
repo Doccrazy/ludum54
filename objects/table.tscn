@@ -5,10 +5,12 @@
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(205, -18, -19, 144, -203, 95, -207, 22, 19, -137, 192, -84)
+position = Vector2(12, 5)
+polygon = PackedVector2Array(131, -29, -31, 91, -160, 61, -162, 11, 14, -105, 126, -60)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -5)
+scale = Vector2(0.727321, 0.727321)
 texture = ExtResource("1_nuod6")
 region_enabled = true
 region_rect = Rect2(391.696, 775.107, 396.771, 267.93)

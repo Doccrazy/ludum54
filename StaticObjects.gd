@@ -51,14 +51,14 @@ func randomPoint(poly: Polygon2D, paths: Array[Node]):
 	while true:
 		var pos = Vector2(randf_range(boundingBox.position.x, boundingBox.end.x), randf_range(boundingBox.position.y, boundingBox.end.y))
 		if Geometry2D.is_point_in_polygon(pos, poly.polygon) && \
-		  Geometry2D.is_point_in_polygon(pos + Vector2(10, 0), poly.polygon) && \
-		  Geometry2D.is_point_in_polygon(pos + Vector2(0, 10), poly.polygon) && \
-		  Geometry2D.is_point_in_polygon(pos + Vector2(-10, 0), poly.polygon) && \
-		  Geometry2D.is_point_in_polygon(pos + Vector2(0, -10), poly.polygon):
+		  Geometry2D.is_point_in_polygon(pos + Vector2(15, 0), poly.polygon) && \
+		  Geometry2D.is_point_in_polygon(pos + Vector2(0, 15), poly.polygon) && \
+		  Geometry2D.is_point_in_polygon(pos + Vector2(-15, 0), poly.polygon) && \
+		  Geometry2D.is_point_in_polygon(pos + Vector2(0, -15), poly.polygon):
 			var isClearOfPath = true
 			for path in paths:
 				var closest = path.curve.get_closest_point(pos)
-				if (closest.distance_to(pos) < 30):
+				if (closest.distance_to(pos) < 40):
 					isClearOfPath = false
 			if isClearOfPath:
 				return pos

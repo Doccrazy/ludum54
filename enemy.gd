@@ -14,10 +14,14 @@ var collisionCount = 0
 var pathDone = false
 var happiness: float = 100
 var wandering = false
+var shitting = false
 var wanderArea: Polygon2D
 var tentPlaced = false
 var tentScene: PackedScene
 var trashScene: PackedScene
+
+signal shit_start
+signal shit_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,7 +39,7 @@ func _process(delta):
 		happiness -= WAIT_ANGER*delta
 	if destinationPixels && progressPixels > destinationPixels && !wandering:
 		startRandomWander()
-	if wandering && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
+	if wandering && !shitting && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
 		translate(Vector2(0, -WANDER_SPEED * delta).rotated(rotation))
 
 func initialize(start: Transform2D, spawnPath: Path2D, mainPath: Path2D, wanderArea: Polygon2D, tent: PackedScene, trash: PackedScene):
@@ -78,11 +82,11 @@ func placeTrash():
 	get_parent().add_child(trash)
 
 func _on_collider_body_entered(body):
-	if body != get_node("StaticBody2D"):
+	if body != get_node("EnemyBody"):
 		collisionCount += 1
 
 func _on_collider_body_exited(body):
-	if body != get_node("StaticBody2D"):
+	if body != get_node("EnemyBody"):
 		collisionCount -= 1
 
 func _on_wander_timer_timeout():
@@ -96,3 +100,12 @@ func _on_tent_timer_timeout():
 func _on_trash_timer_timeout():
 	if randf() < TRASH_PROBABILITY:
 		placeTrash()
+
+
+func _on_shit_start():
+	shitting = true
+	visible = false
+
+func _on_shit_end():
+	shitting = false
+	visible = true
