@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dcu4fdabbv2gx"]
+[gd_scene load_steps=38 format=3 uid="uid://dcu4fdabbv2gx"]
 
 [ext_resource type="Script" path="res://drawCurve.gd" id="1_l0nr8"]
 [ext_resource type="Script" path="res://StaticObjects.gd" id="2_dlj3h"]
@@ -26,12 +26,15 @@
 [ext_resource type="PackedScene" uid="uid://dh4garsampahr" path="res://tents/tent4.tscn" id="22_mcaeu"]
 [ext_resource type="PackedScene" uid="uid://bx1wjefskthba" path="res://trash.tscn" id="23_k8ojw"]
 [ext_resource type="PackedScene" uid="uid://cjtwspe1camh8" path="res://player.tscn" id="26_lsojf"]
+[ext_resource type="Script" path="res://labelCounter.gd" id="27_5irfa"]
+[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="28_4hb78"]
+[ext_resource type="Texture2D" uid="uid://ddjy2wsia8xyl" path="res://graphics/infra.svg" id="29_qxsy8"]
 
 [sub_resource type="Curve2D" id="Curve2D_c78jt"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -29, 63, -57.9563, -35.2778, 57.9563, 35.2778, 62, 173, 0, 0, 0, 0, 121, 200)
+"points": PackedVector2Array(0, 0, 0, 0, 205, -52, 46.2493, -27.7496, -46.2493, 27.7496, 191, 23, -1.68179, -66.4308, 1.68179, 66.4308, 25, 57, -57.9563, -35.2778, 57.9563, 35.2778, 62, 173, 0, 0, 0, 0, 121, 200)
 }
-point_count = 3
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_ojt80"]
 _data = {
@@ -57,11 +60,14 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gi28g"]
+radius = 21.2
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bltb0"]
 radius = 30.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gi28g"]
-radius = 21.2
+[sub_resource type="LabelSettings" id="LabelSettings_51n5x"]
+font_size = 32
 
 [node name="Main" type="Node2D"]
 
@@ -79,10 +85,11 @@ script = ExtResource("17_7xfir")
 enemyScene = ExtResource("18_hopwh")
 
 [node name="Timer" type="Timer" parent="SpawnPath"]
+wait_time = 5.0
 autostart = true
 
 [node name="Line2D" type="Line2D" parent="SpawnPath"]
-points = PackedVector2Array(-29, 63, -22.9314, 75.2266, -5.23361, 104.771, 7.73795, 122.692, 23.3309, 140.93, 41.45, 158.145, 51.4271, 165.951, 62, 173, 95.6691, 192.102, 106.137, 197.046, 113.234, 199.729, 115.722, 200.413, 117.613, 200.759, 118.361, 200.829, 118.989, 200.843, 119.509, 200.811, 119.931, 200.742, 120.265, 200.646, 120.403, 200.59, 120.522, 200.531, 120.624, 200.47, 120.71, 200.409, 120.783, 200.347, 120.842, 200.287, 120.889, 200.229, 120.926, 200.176, 120.954, 200.127, 120.974, 200.084, 120.987, 200.049, 120.995, 200.023, 121, 200)
+points = PackedVector2Array(205, -52, 206.295, -49.9155, 209.316, -44.1835, 212.765, -35.5863, 214.244, -30.4577, 215.343, -24.9061, 215.901, -19.0293, 215.754, -12.9251, 215.366, -9.81829, 214.741, -6.69128, 213.859, -3.55631, 212.699, -0.425605, 211.242, 2.68862, 209.466, 5.77414, 207.352, 8.81874, 204.88, 11.8102, 202.029, 14.7362, 198.779, 17.5847, 195.109, 20.3434, 191, 23, 186.45, 25.3505, 181.496, 27.225, 176.173, 28.6629, 170.52, 29.7034, 158.362, 30.7495, 145.315, 30.6775, 90.0258, 25.4945, 64.5897, 24.3657, 53.4404, 25.267, 48.385, 26.2215, 43.7242, 27.5643, 39.4943, 29.3347, 37.5522, 30.3925, 35.7316, 31.572, 34.0368, 32.878, 32.4724, 34.3154, 31.0429, 35.8892, 29.753, 37.6043, 28.6071, 39.4656, 27.6098, 41.4779, 26.7656, 43.6463, 26.079, 45.9756, 25.5546, 48.4707, 25.197, 51.1365, 25, 57, 22.1647, 113.595, 22.028, 120.375, 22.3971, 126.682, 23.4256, 132.625, 24.2352, 135.493, 25.2673, 138.31, 26.5411, 141.089, 28.0759, 143.844, 29.8907, 146.588, 32.0049, 149.334, 37.2082, 154.888, 43.8393, 160.612, 62, 173, 95.6691, 192.102, 106.137, 197.046, 113.234, 199.729, 115.722, 200.413, 117.613, 200.759, 118.361, 200.829, 118.989, 200.843, 119.509, 200.811, 119.931, 200.742, 120.265, 200.646, 120.403, 200.59, 120.522, 200.531, 120.624, 200.47, 120.71, 200.409, 120.783, 200.347, 120.842, 200.287, 120.889, 200.229, 120.926, 200.176, 120.954, 200.127, 120.974, 200.084, 120.987, 200.049, 120.995, 200.023, 121, 200)
 width = 30.0
 default_color = Color(0.72549, 0.72549, 0.72549, 1)
 script = ExtResource("1_l0nr8")
@@ -136,33 +143,81 @@ objects5 = Array[PackedScene]([ExtResource("10_pnj43")])
 tents = Array[PackedScene]([ExtResource("19_e6xwp"), ExtResource("20_bcymx"), ExtResource("21_6sc28"), ExtResource("22_mcaeu")])
 trash = ExtResource("23_k8ojw")
 
-[node name="ClearArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearArea"]
-position = Vector2(-28, 63)
-shape = SubResource("CircleShape2D_bltb0")
-
-[node name="Gate" type="Node2D" parent="."]
+[node name="Gate" type="Node2D" parent="LevelObjects"]
 position = Vector2(151, 198)
 script = ExtResource("19_qromv")
 metadata/type = "gate"
 
-[node name="GateSprite" parent="Gate" instance=ExtResource("19_fee1c")]
+[node name="GateSprite" parent="LevelObjects/Gate" instance=ExtResource("19_fee1c")]
 scale = Vector2(0.271361, 0.271361)
 
-[node name="Area2D" type="Area2D" parent="Gate"]
+[node name="Area2D" type="Area2D" parent="LevelObjects/Gate"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/Gate/Area2D"]
 position = Vector2(-28, -1)
 shape = SubResource("CircleShape2D_gi28g")
 
-[node name="AreaGatehouse" type="Area2D" parent="Gate"]
+[node name="AreaGatehouse" type="Area2D" parent="LevelObjects/Gate"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/AreaGatehouse"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/Gate/AreaGatehouse"]
 position = Vector2(20, -12)
 shape = SubResource("CircleShape2D_gi28g")
 
+[node name="ClearArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearArea"]
+position = Vector2(205, -50)
+shape = SubResource("CircleShape2D_bltb0")
+
 [node name="Player" parent="." instance=ExtResource("26_lsojf")]
-position = Vector2(265, 158)
+position = Vector2(220, 188)
+
+[node name="ToiletCountPanel" type="Panel" parent="."]
+offset_left = 1006.0
+offset_top = 11.0
+offset_right = 1137.0
+offset_bottom = 79.0
+script = ExtResource("27_5irfa")
+metaType = "toilet"
+
+[node name="Sprite2D" type="Sprite2D" parent="ToiletCountPanel"]
+position = Vector2(30, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("28_4hb78")
+region_enabled = true
+region_rect = Rect2(10.4776, 409.965, 215.223, 314.782)
+
+[node name="Label" type="Label" parent="ToiletCountPanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 12.0
+offset_right = 127.0
+offset_bottom = 60.0
+text = "x n"
+label_settings = SubResource("LabelSettings_51n5x")
+
+[node name="GateCountPanel" type="Panel" parent="."]
+offset_left = 1006.0
+offset_top = 93.0
+offset_right = 1137.0
+offset_bottom = 161.0
+script = ExtResource("27_5irfa")
+metaType = "gate"
+
+[node name="Sprite2D" type="Sprite2D" parent="GateCountPanel"]
+position = Vector2(30, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("29_qxsy8")
+region_enabled = true
+region_rect = Rect2(24.0256, 34.8701, 299.577, 310.99)
+
+[node name="Label" type="Label" parent="GateCountPanel"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 12.0
+offset_right = 127.0
+offset_bottom = 60.0
+text = "x n"
+label_settings = SubResource("LabelSettings_51n5x")
 
 [connection signal="timeout" from="SpawnPath/Timer" to="SpawnPath" method="_on_timer_timeout"]

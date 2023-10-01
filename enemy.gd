@@ -1,10 +1,14 @@
 extends Node2D
 
-const PATH_SPEED = 100
+const PATH_SPEED = 40
 const WANDER_SPEED = 20
-const WAIT_ANGER = 10
+
+const WAIT_ANGER = 2 # minus/sec while waiting
+const TRASH_ANGER = 1 # minus/sec for every trash in range
+const WANDER_HAPPINESS = 1 # plus/sec while walking about
+
 const TENT_PROBABILITY = 0.1 # per second after arriving at destination
-const TRASH_PROBABILITY = 0.1 # per second after placing tent
+const TRASH_PROBABILITY = 0.025 # per second after placing tent
 const MOLOTOV_PROBABILITY = 0.1 # per second when unhappy
 
 var progressPixels: float = 0
@@ -35,12 +39,26 @@ func _process(delta):
 		transform = currentPath.curve.sample_baked_with_rotation(progressPixels, true)
 		if (progressPixels >= currentPath.curve.get_baked_length()):
 			pathDone = true
-	if (collisionCount > 0 || pathDone) && currentPath:
-		happiness -= WAIT_ANGER*delta
+
+	if pathDone && nextPath && !get_node("../Gate"):
+		proceedIn()
 	if destinationPixels && progressPixels > destinationPixels && !wandering:
 		startRandomWander()
 	if wandering && !isLockedIn && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
 		translate(Vector2(0, -WANDER_SPEED * delta).rotated(rotation))
+
+	var reduced = false
+	if (collisionCount > 0 || pathDone) && currentPath:
+		happiness = max(0, happiness - WAIT_ANGER*delta)
+		reduced = true
+	for area in $TrashArea.get_overlapping_areas():
+		if area.get_parent().has_meta("type") && area.get_parent().get_meta("type") == "trash":
+			happiness = max(0, happiness - TRASH_ANGER*delta)
+			reduced = true
+	if wandering && !reduced:
+		happiness = min(happiness + WANDER_HAPPINESS*delta, 100)
+
+
 	$HappyParticle.emitting = happiness > 80
 	$SmileParticle.emitting = happiness <= 80 && happiness > 50
 	$WorriedParticle.emitting = happiness <= 50 && happiness > 20
@@ -116,6 +134,7 @@ func _on_molotov_timer_timeout():
 func lockIn():
 	isLockedIn = true
 	visible = false
+	happiness = 100
 
 func releaseLock():
 	isLockedIn = false

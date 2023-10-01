@@ -17,6 +17,8 @@ func _input(event):
 	if event.is_action_pressed("action"):
 		var areas = $ActionArea.get_overlapping_areas()
 		for area in areas:
+			if !area.get_parent().has_meta("type"):
+				continue
 			if area.get_parent().get_meta("type") == "gate":
 				var gate = area.get_parent()
 				gate.passSingleEnemy()
@@ -25,9 +27,13 @@ func _input(event):
 				var toilet = area.get_parent()
 				toilet.clean()
 				pass
+			elif area.get_parent().get_meta("type") == "trash":
+				var trash = area.get_parent()
+				trash.remove()
 			elif area.get_parent().get_meta("type") == "tent":
 				var tent = area.get_parent()
 				tent.remove()
+
 	elif event.is_action_pressed("fire"):
 		var e = expl.instantiate()
 		e.position = get_global_mouse_position()

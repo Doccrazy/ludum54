@@ -5,7 +5,7 @@ extends RigidBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	angular_velocity = 2*PI
-	$ExplodeTimer.wait_time = randf_range(1.5, 2.5)
+	$ExplodeTimer.wait_time = randf_range(1, 2.5)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

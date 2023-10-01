@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dephrk2wl2d11"]
+[gd_scene load_steps=4 format=3 uid="uid://dephrk2wl2d11"]
 
+[ext_resource type="Script" path="res://objects/explodable.gd" id="1_b7itl"]
 [ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_nuod6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qliip"]
+radius = 85.0059
+
 [node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_b7itl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(12, 5)
@@ -14,3 +19,8 @@ scale = Vector2(0.727321, 0.727321)
 texture = ExtResource("1_nuod6")
 region_enabled = true
 region_rect = Rect2(391.696, 775.107, 396.771, 267.93)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qliip")

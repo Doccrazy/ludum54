@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_nxsom")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
 rotation = -1.5708
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ypg1l")
 region_enabled = true
 region_rect = Rect2(50.0083, 247.45, 190.333, 181.548)
