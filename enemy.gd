@@ -41,6 +41,10 @@ func _process(delta):
 		startRandomWander()
 	if wandering && !shitting && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
 		translate(Vector2(0, -WANDER_SPEED * delta).rotated(rotation))
+	$HappyParticle.emitting = happiness > 80
+	$SmileParticle.emitting = happiness <= 80 && happiness > 50
+	$WorriedParticle.emitting = happiness <= 50 && happiness > 20
+	$AngryParticle.emitting = happiness <= 20
 
 func initialize(start: Transform2D, spawnPath: Path2D, mainPath: Path2D, wanderArea: Polygon2D, tent: PackedScene, trash: PackedScene):
 	transform = start
