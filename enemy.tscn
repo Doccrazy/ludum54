@@ -142,8 +142,6 @@ remote_path = NodePath("../AngryParticle")
 update_rotation = false
 update_scale = false
 
-[connection signal="shit_end" from="." to="." method="_on_shit_end"]
-[connection signal="shit_start" from="." to="." method="_on_shit_start"]
 [connection signal="body_entered" from="EnemyArea" to="." method="_on_collider_body_entered"]
 [connection signal="body_exited" from="EnemyArea" to="." method="_on_collider_body_exited"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

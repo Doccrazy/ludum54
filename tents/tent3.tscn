@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://s6tq18yecxab"]
+[gd_scene load_steps=4 format=3 uid="uid://s6tq18yecxab"]
 
 [ext_resource type="Texture2D" uid="uid://cfqlfifuauvsx" path="res://graphics/tents.svg" id="1_8wh5d"]
+[ext_resource type="Script" path="res://tents/tent.gd" id="1_qvs8k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nie4u"]
+radius = 85.3059
+height = 266.198
 
 [node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_qvs8k")
+metadata/type = "tent"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-144, -5, 37, 76, 158, 3, -14, -65)
@@ -11,3 +18,10 @@ polygon = PackedVector2Array(-144, -5, 37, 76, 158, 3, -14, -65)
 texture = ExtResource("1_8wh5d")
 region_enabled = true
 region_rect = Rect2(2.42471, 227.319, 401.017, 225.472)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7, -9)
+rotation = 1.99266
+shape = SubResource("CapsuleShape2D_nie4u")

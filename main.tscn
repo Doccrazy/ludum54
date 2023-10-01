@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcu4fdabbv2gx"]
+[gd_scene load_steps=34 format=3 uid="uid://dcu4fdabbv2gx"]
 
 [ext_resource type="Script" path="res://drawCurve.gd" id="1_l0nr8"]
 [ext_resource type="Script" path="res://StaticObjects.gd" id="2_dlj3h"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://s6tq18yecxab" path="res://tents/tent3.tscn" id="21_6sc28"]
 [ext_resource type="PackedScene" uid="uid://dh4garsampahr" path="res://tents/tent4.tscn" id="22_mcaeu"]
 [ext_resource type="PackedScene" uid="uid://bx1wjefskthba" path="res://trash.tscn" id="23_k8ojw"]
+[ext_resource type="PackedScene" uid="uid://cjtwspe1camh8" path="res://player.tscn" id="26_lsojf"]
 
 [sub_resource type="Curve2D" id="Curve2D_c78jt"]
 _data = {
@@ -144,6 +145,7 @@ shape = SubResource("CircleShape2D_bltb0")
 [node name="Gate" type="Node2D" parent="."]
 position = Vector2(151, 198)
 script = ExtResource("19_qromv")
+metadata/type = "gate"
 
 [node name="GateSprite" parent="Gate" instance=ExtResource("19_fee1c")]
 scale = Vector2(0.271361, 0.271361)
@@ -153,5 +155,15 @@ scale = Vector2(0.271361, 0.271361)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
 position = Vector2(-28, -1)
 shape = SubResource("CircleShape2D_gi28g")
+
+[node name="AreaGatehouse" type="Area2D" parent="Gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/AreaGatehouse"]
+position = Vector2(20, -12)
+shape = SubResource("CircleShape2D_gi28g")
+
+[node name="Player" parent="." instance=ExtResource("26_lsojf")]
+position = Vector2(265, 158)
+scale = Vector2(0.2, 0.2)
 
 [connection signal="timeout" from="SpawnPath/Timer" to="SpawnPath" method="_on_timer_timeout"]

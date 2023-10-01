@@ -15,17 +15,24 @@ func _process(delta):
 func occupy(node: Node2D):
 	if !occupiedBy && !dirty:
 		occupiedBy = node
-		occupiedBy.emit_signal("shit_start")
+		occupiedBy.lockIn()
 		$AnimationPlayer.play("busy")
 		$BusyTimer.start()
 
+func clean():
+	if dirty:
+		$SpriteClean.visible = true
+		$SpriteDirty.visible = false
+		dirty = false
+
 func _on_busy_timer_timeout():
 	$AnimationPlayer.play("RESET")
-	occupiedBy.emit_signal("shit_end")
+	occupiedBy.releaseLock()
 	occupiedBy = null
 	dirty = true
 	$SpriteClean.visible = false
 	$SpriteDirty.visible = true
+	$ShitParticles.emitting = true
 
 func _on_area_2d_area_entered(area):
 	if area.name == "EnemyArea":

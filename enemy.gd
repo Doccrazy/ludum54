@@ -14,14 +14,12 @@ var collisionCount = 0
 var pathDone = false
 var happiness: float = 100
 var wandering = false
-var shitting = false
+var isLockedIn = false
 var wanderArea: Polygon2D
 var tentPlaced = false
 var tentScene: PackedScene
 var trashScene: PackedScene
 
-signal shit_start
-signal shit_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,7 +37,7 @@ func _process(delta):
 		happiness -= WAIT_ANGER*delta
 	if destinationPixels && progressPixels > destinationPixels && !wandering:
 		startRandomWander()
-	if wandering && !shitting && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
+	if wandering && !isLockedIn && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
 		translate(Vector2(0, -WANDER_SPEED * delta).rotated(rotation))
 	$HappyParticle.emitting = happiness > 80
 	$SmileParticle.emitting = happiness <= 80 && happiness > 50
@@ -105,11 +103,10 @@ func _on_trash_timer_timeout():
 	if randf() < TRASH_PROBABILITY:
 		placeTrash()
 
-
-func _on_shit_start():
-	shitting = true
+func lockIn():
+	isLockedIn = true
 	visible = false
 
-func _on_shit_end():
-	shitting = false
+func releaseLock():
+	isLockedIn = false
 	visible = true

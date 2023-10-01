@@ -10,12 +10,12 @@ func _ready():
 func _process(delta):
 	pass
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		var enemyAreas = $Area2D.get_overlapping_areas()
-		print(enemyAreas)
-		$GateSprite.open()
-		for enemyArea in enemyAreas:
-			var enemy = enemyArea.get_parent()
-			if enemy.pathDone:
-				enemy.proceedIn()
+
+func passSingleEnemy():
+	var enemyAreas = $Area2D.get_overlapping_areas()
+	print(enemyAreas)
+	$GateSprite.open()
+	for enemyArea in enemyAreas:
+		var enemy = enemyArea.get_parent()
+		if enemy.pathDone:
+			enemy.proceedIn()
