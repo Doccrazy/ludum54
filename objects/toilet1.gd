@@ -2,6 +2,9 @@ extends StaticBody2D
 
 var occupiedBy: Node2D
 var dirty = false
+var fireObj: Node2D
+
+var fireScene = preload("res://effects/fire.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +27,16 @@ func clean():
 		$SpriteClean.visible = true
 		$SpriteDirty.visible = false
 		dirty = false
+
+func ignite():
+	if !fireObj:
+		fireObj = fireScene.instantiate()
+		add_child(fireObj)
+
+func extinguish():
+	if fireObj:
+		fireObj.queue_free()
+		fireObj = null
 
 func _on_busy_timer_timeout():
 	$AnimationPlayer.play("RESET")

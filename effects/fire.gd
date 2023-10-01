@@ -1,19 +1,19 @@
-extends RigidBody2D
+extends Node2D
 
-@export var explosionScene: PackedScene
+var shockwaveScene = preload("res://effects/shockwave.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	angular_velocity = 2*PI
-	$ExplodeTimer.wait_time = randf_range(1.5, 2.5)
 	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _on_explode_timer_timeout():
-	var explosion = explosionScene.instantiate()
-	explosion.position = position
-	get_parent().add_child(explosion)
+	var shockwave = shockwaveScene.instantiate()
+	shockwave.position = global_position
+	get_tree().root.add_child(shockwave)
+	get_parent().queue_free()
 	queue_free()

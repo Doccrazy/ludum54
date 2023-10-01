@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbfogdqu77gg3"]
+[gd_scene load_steps=11 format=3 uid="uid://dbfogdqu77gg3"]
 
+[ext_resource type="Script" path="res://effects/fire.gd" id="1_ggct6"]
 [ext_resource type="Texture2D" uid="uid://d3udfhc3g5dgy" path="res://graphics/smokeParticle.png" id="1_lytc5"]
-[ext_resource type="Texture2D" uid="uid://kkb0sj7j3vky" path="res://graphics/shockwave.png" id="2_iga7l"]
 
 [sub_resource type="Gradient" id="Gradient_vdori"]
 offsets = PackedFloat32Array(0, 0.162963, 1)
@@ -17,10 +17,12 @@ particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 39.32
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 52.63
-initial_velocity_max = 126.32
+initial_velocity_min = 25.0
+initial_velocity_max = 60.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 0.5
 color_ramp = SubResource("GradientTexture1D_pep8f")
 
 [sub_resource type="Gradient" id="Gradient_4nu80"]
@@ -39,60 +41,48 @@ curve = SubResource("Curve_qfsxe")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7i8x"]
 emission_shape = 1
-emission_sphere_radius = 20.0
+emission_sphere_radius = 10.0
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 25.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 42.11
-initial_velocity_max = 105.26
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 0.2
-scale_max = 0.5
+scale_min = 0.1
+scale_max = 0.25
 scale_curve = SubResource("CurveTexture_0xsrm")
 color_ramp = SubResource("GradientTexture1D_po0es")
 
-[sub_resource type="Gradient" id="Gradient_1s6dw"]
-offsets = PackedFloat32Array(0, 0.488889, 1)
-colors = PackedColorArray(0, 0.976471, 0.984314, 0.572549, 1, 1, 1, 0.639216, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p7fpo"]
-gradient = SubResource("Gradient_1s6dw")
-
-[sub_resource type="Curve" id="Curve_phkmf"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_r6563"]
-curve = SubResource("Curve_phkmf")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vqd8h"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_curve = SubResource("CurveTexture_r6563")
-color_ramp = SubResource("GradientTexture1D_p7fpo")
-
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ggct6")
 
 [node name="SmokeParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(0, -23)
+top_level = true
 process_material = SubResource("ParticleProcessMaterial_qggtc")
 texture = ExtResource("1_lytc5")
 
 [node name="FireParticles2D" type="GPUParticles2D" parent="."]
+top_level = true
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_g7i8x")
 texture = ExtResource("1_lytc5")
 lifetime = 1.5
 
-[node name="ShockwaveParticles2D" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 1
-process_material = SubResource("ParticleProcessMaterial_vqd8h")
-texture = ExtResource("2_iga7l")
-lifetime = 0.4
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../SmokeParticles2D")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../FireParticles2D")
+update_rotation = false
+update_scale = false
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
-fixed_fps = 60
+autostart = true
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

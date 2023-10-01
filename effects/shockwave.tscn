@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbgsyafga1ixa"]
+
+[ext_resource type="Texture2D" uid="uid://kkb0sj7j3vky" path="res://graphics/shockwave.png" id="1_d3nw0"]
+[ext_resource type="Script" path="res://effects/shockwave.gd" id="1_gankh"]
+
+[sub_resource type="Gradient" id="Gradient_nj5ua"]
+offsets = PackedFloat32Array(0, 0.488889, 1)
+colors = PackedColorArray(0, 0.976471, 0.984314, 0.572549, 1, 1, 1, 0.639216, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p7fpo"]
+gradient = SubResource("Gradient_nj5ua")
+
+[sub_resource type="Curve" id="Curve_tfcm2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.494737), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r6563"]
+curve = SubResource("Curve_tfcm2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3lo3"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_r6563")
+color_ramp = SubResource("GradientTexture1D_p7fpo")
+
+[node name="shockwave" type="Node2D"]
+script = ExtResource("1_gankh")
+
+[node name="ShockwaveParticles2D" type="GPUParticles2D" parent="."]
+top_level = true
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_s3lo3")
+texture = ExtResource("1_d3nw0")
+lifetime = 0.4
+one_shot = true
+fixed_fps = 60
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../ShockwaveParticles2D")
+update_rotation = false
+update_scale = false
+
+[node name="FreeTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

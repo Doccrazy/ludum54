@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 100
 @export var rotation_speed = 2.5
+
+var expl = preload("res://effects/explosion.tscn")
 
 const GATE_DISTANCE = 50
 
@@ -26,8 +28,20 @@ func _input(event):
 			elif area.get_parent().get_meta("type") == "tent":
 				var tent = area.get_parent()
 				tent.remove()
+	elif event.is_action_pressed("fire"):
+		var e = expl.instantiate()
+		e.position = get_global_mouse_position()
+		get_tree().root.add_child(e)
+
+		$WaterParticles.emitting = true
+	elif event.is_action_released("fire"):
+		$WaterParticles.emitting = false
 
 func _physics_process(delta):
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
 	move_and_slide()
+	if $WaterParticles.emitting:
+		for area in $WaterArea.get_overlapping_areas():
+			if area.get_parent().has_method("extinguish"):
+				area.get_parent().extinguish()

@@ -58,11 +58,13 @@ emission_sphere_radius = 10.0
 particle_flag_disable_z = true
 spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 200.0
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
 angular_velocity_max = 50.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.2
 color_ramp = SubResource("GradientTexture1D_uqepn")
 
 [node name="StaticBody2D" type="StaticBody2D"]
@@ -101,13 +103,18 @@ position = Vector2(-2, -18)
 shape = SubResource("CircleShape2D_b5n08")
 
 [node name="ShitParticles" type="GPUParticles2D" parent="."]
-position = Vector2(0, -48.88)
+top_level = true
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_nfm5d")
 texture = ExtResource("3_x73ni")
 one_shot = true
 explosiveness = 0.8
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../ShitParticles")
+update_rotation = false
+update_scale = false
 
 [connection signal="timeout" from="BusyTimer" to="." method="_on_busy_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

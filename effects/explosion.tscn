@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://2uylqnopgbre"]
+[gd_scene load_steps=9 format=3 uid="uid://2uylqnopgbre"]
 
 [ext_resource type="Texture2D" uid="uid://d3udfhc3g5dgy" path="res://graphics/smokeParticle.png" id="1_bh4pe"]
+[ext_resource type="Script" path="res://effects/explosion.gd" id="1_ulmhe"]
 
 [sub_resource type="Gradient" id="Gradient_vqomb"]
 offsets = PackedFloat32Array(0, 0.155556, 0.451852, 1)
@@ -34,12 +35,30 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_my5j1")
 color_ramp = SubResource("GradientTexture1D_q26mq")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1nqn"]
+radius = 57.0351
+
 [node name="Explosion" type="Node2D"]
+script = ExtResource("1_ulmhe")
 
 [node name="FireParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_xi7e4")
 texture = ExtResource("1_bh4pe")
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.65
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h1nqn")
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

@@ -164,6 +164,5 @@ shape = SubResource("CircleShape2D_gi28g")
 
 [node name="Player" parent="." instance=ExtResource("26_lsojf")]
 position = Vector2(265, 158)
-scale = Vector2(0.2, 0.2)
 
 [connection signal="timeout" from="SpawnPath/Timer" to="SpawnPath" method="_on_timer_timeout"]

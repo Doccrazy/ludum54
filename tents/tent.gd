@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+var fireScene = preload("res://effects/fire.tscn")
+var fireObj: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,3 +14,12 @@ func _process(delta):
 
 func remove():
 	queue_free()
+
+func ignite():
+	if !fireObj:
+		fireObj = fireScene.instantiate()
+		add_child(fireObj)
+
+func extinguish():
+	if fireObj:
+		fireObj.queue_free()
