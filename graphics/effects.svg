@@ -11,6 +11,7 @@
    sodipodi:docname="effects.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -24,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.0444209"
-     inkscape:cx="269.52735"
-     inkscape:cy="281.4957"
+     inkscape:zoom="2.0888418"
+     inkscape:cx="356.89634"
+     inkscape:cy="236.01595"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="1912"
@@ -34,52 +35,166 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs30238" />
+     id="defs30238">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient33524">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0.59681094"
+         id="stop33520" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1"
+         id="stop33522" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient33429">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop33425" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop33427" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33431"
+       cx="42.179474"
+       cy="42.939465"
+       fx="42.179474"
+       fy="42.939465"
+       r="9.4998817"
+       gradientTransform="matrix(1,0,0,0.76,0,10.305471)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33433"
+       cx="36.859539"
+       cy="38.759518"
+       fx="36.859539"
+       fy="38.759518"
+       r="5.953259"
+       gradientTransform="matrix(1,0,0,0.9361702,0,2.4740124)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33435"
+       cx="49.146053"
+       cy="39.139511"
+       fx="49.146053"
+       fy="39.139511"
+       r="3.7999527"
+       gradientTransform="matrix(1,0,0,1.1666665,0,-6.5232457)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33437"
+       cx="44.966106"
+       cy="49.399384"
+       fx="44.966106"
+       fy="49.399384"
+       r="7.7265701"
+       gradientTransform="matrix(1,0,0,0.78688526,0,10.527737)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33439"
+       cx="40.912823"
+       cy="40.279499"
+       fx="40.912823"
+       fy="40.279499"
+       r="7.2199101"
+       gradientTransform="matrix(1,0,0,0.87719289,0,4.9466088)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33429"
+       id="radialGradient33441"
+       cx="48.132732"
+       cy="46.612751"
+       fx="48.132732"
+       fy="46.612751"
+       r="4.306613"
+       gradientTransform="matrix(1,0,0,0.76470589,0,10.967706)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient33524"
+       id="radialGradient33528"
+       cx="99.558754"
+       cy="45.85276"
+       fx="99.558754"
+       fy="45.85276"
+       r="18.739773"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2433472,0.00132294,-0.0013229,1.2433149,-24.166681,-11.28837)" />
+  </defs>
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1">
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+       style="fill:url(#radialGradient33431);fill-opacity:1;stroke-width:1"
        id="path30829"
        cx="42.179474"
        cy="42.939465"
        rx="9.4998817"
-       ry="7.2199101" />
+       ry="7.2199101"
+       inkscape:export-filename="smokeParticle.png"
+       inkscape:export-xdpi="146.36298"
+       inkscape:export-ydpi="146.36298" />
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+       style="fill:url(#radialGradient33433);fill-opacity:1;stroke-width:1"
        id="path30831"
        cx="36.859539"
        cy="38.759518"
        rx="5.953259"
        ry="5.5732636" />
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:0.818839"
+       style="fill:url(#radialGradient33435);fill-opacity:1;stroke-width:0.818839"
        id="path30833"
        cx="49.146053"
        cy="39.139511"
        rx="3.7999527"
        ry="4.4332776" />
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+       style="fill:url(#radialGradient33437);fill-opacity:1;stroke-width:1"
        id="path30835"
        cx="44.966106"
        cy="49.399384"
        rx="7.7265701"
        ry="6.0799241" />
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+       style="fill:url(#radialGradient33439);fill-opacity:1;stroke-width:1"
        id="path30837"
        cx="40.912823"
        cy="40.279499"
        rx="7.2199101"
        ry="6.3332539" />
     <ellipse
-       style="fill:#ffffff;fill-opacity:1;stroke-width:1"
+       style="fill:url(#radialGradient33441);fill-opacity:1;stroke-width:1"
        id="path30839"
        cx="48.132732"
        cy="46.612751"
        rx="4.306613"
        ry="3.2932923" />
+    <circle
+       style="fill:none;fill-opacity:1;stroke-width:10;stroke:url(#radialGradient33528);stroke-dasharray:none"
+       id="path33495"
+       cx="99.558754"
+       cy="45.85276"
+       r="18.239773"
+       inkscape:export-filename="shockwave.png"
+       inkscape:export-xdpi="279.7962"
+       inkscape:export-ydpi="279.7962" />
   </g>
 </svg>

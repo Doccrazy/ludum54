@@ -1,3 +1,135 @@
-[gd_scene format=3 uid="uid://dcu4fdabbv2gx"]
+[gd_scene load_steps=27 format=3 uid="uid://dcu4fdabbv2gx"]
+
+[ext_resource type="Script" path="res://drawCurve.gd" id="1_l0nr8"]
+[ext_resource type="Script" path="res://StaticObjects.gd" id="2_dlj3h"]
+[ext_resource type="PackedScene" uid="uid://drdrwvirfo48f" path="res://objects/bush.tscn" id="3_w5jwq"]
+[ext_resource type="PackedScene" uid="uid://c7t2jpwepcix" path="res://objects/log1.tscn" id="4_jg1pg"]
+[ext_resource type="PackedScene" uid="uid://dpubxgbptpg4m" path="res://objects/log2.tscn" id="5_mlv06"]
+[ext_resource type="PackedScene" uid="uid://unmus0ceed5q" path="res://objects/log3.tscn" id="6_icnqj"]
+[ext_resource type="PackedScene" uid="uid://cce0afbqa2gsr" path="res://objects/rock1.tscn" id="7_ku830"]
+[ext_resource type="PackedScene" uid="uid://wd0lyq2nupf5" path="res://objects/rock2.tscn" id="8_ok7on"]
+[ext_resource type="PackedScene" uid="uid://dephrk2wl2d11" path="res://objects/table.tscn" id="9_1g167"]
+[ext_resource type="PackedScene" uid="uid://b340lbrlkv1q6" path="res://objects/tardis.tscn" id="10_pnj43"]
+[ext_resource type="PackedScene" uid="uid://dw1b2jt8hpyle" path="res://objects/toilet1.tscn" id="11_8sv34"]
+[ext_resource type="PackedScene" uid="uid://dnraqjsmfygt0" path="res://objects/tree1.tscn" id="12_vccdc"]
+[ext_resource type="PackedScene" uid="uid://upa8i6abhu11" path="res://objects/tree2.tscn" id="13_inhw5"]
+[ext_resource type="PackedScene" uid="uid://ce4n7ao7qmxr" path="res://objects/tree3.tscn" id="14_hn5dx"]
+[ext_resource type="PackedScene" uid="uid://d1e0nwda1hdbe" path="res://objects/tree4.tscn" id="15_iecrn"]
+[ext_resource type="PackedScene" uid="uid://6lyc3d3spd1p" path="res://objects/water_station.tscn" id="16_fur6k"]
+[ext_resource type="Script" path="res://SpawnPath.gd" id="17_7xfir"]
+[ext_resource type="PackedScene" uid="uid://naombmq55b7i" path="res://enemy.tscn" id="18_hopwh"]
+[ext_resource type="PackedScene" uid="uid://baveohy1c7wdb" path="res://gate.tscn" id="19_fee1c"]
+[ext_resource type="Script" path="res://entry.gd" id="19_qromv"]
+
+[sub_resource type="Curve2D" id="Curve2D_c78jt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -29, 63, -57.9563, -35.2778, 57.9563, 35.2778, 62, 173, 0, 0, 0, 0, 121, 200)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ojt80"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 113, 198, -38, -41, 38, 41, 308, 294, -57, 8, 57, -8, 337, 485, -58, 75, 58, -75, 591, 338, 0, 0, 0, 0, 884, 487)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_cl3da"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 114, 197, -52.9167, -17.6389, 52.9167, 17.6389, 348, 303, -65.5159, 27.7182, 65.5159, -27.7182, 487, 252, 0, 0, 0, 0, 585, 130)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_3dg0m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 114, 199, -47.877, -15.119, 47.877, 15.119, 329, 294, -74.3353, 42.8373, 74.3353, -42.8373, 436, 282, -99.5337, 10.0794, 99.5337, -10.0794, 620, 217, 0, 0, 0, 0, 896, 243)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bltb0"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gi28g"]
+radius = 21.2
 
 [node name="Main" type="Node2D"]
+
+[node name="GroundPoly" type="Polygon2D" parent="."]
+color = Color(0.431373, 0.662745, 0.196078, 1)
+polygon = PackedVector2Array(155, 66, 74, 318, 162, 518, 420, 619, 642, 456, 982, 616, 1065, 359, 927, 183, 755, 43, 516, 131)
+
+[node name="GroundOffsetPoly" type="Polygon2D" parent="."]
+color = Color(0.278431, 0.388235, 0.156863, 1)
+polygon = PackedVector2Array(75, 318, 75, 376, 163, 567, 419, 662, 643, 493, 983, 654, 1063, 406, 1064, 358, 982, 614, 642, 454, 419, 619, 163, 516)
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c78jt")
+script = ExtResource("17_7xfir")
+enemyScene = ExtResource("18_hopwh")
+
+[node name="Timer" type="Timer" parent="SpawnPath"]
+autostart = true
+
+[node name="Line2D" type="Line2D" parent="SpawnPath"]
+points = PackedVector2Array(-29, 63, -22.9314, 75.2266, -5.23363, 104.771, 7.73794, 122.692, 23.3309, 140.93, 41.45, 158.145, 51.4271, 165.951, 62, 173, 95.6691, 192.102, 106.137, 197.046, 113.234, 199.729, 115.722, 200.413, 117.613, 200.759, 118.361, 200.829, 118.989, 200.843, 119.509, 200.811, 119.931, 200.742, 120.265, 200.646, 120.403, 200.59, 120.522, 200.531, 120.624, 200.47, 120.71, 200.409, 120.783, 200.347, 120.842, 200.287, 120.889, 200.229, 120.926, 200.176, 120.954, 200.127, 120.974, 200.084, 120.987, 200.049, 120.995, 200.023, 121, 200)
+width = 30.0
+default_color = Color(0.72549, 0.72549, 0.72549, 1)
+script = ExtResource("1_l0nr8")
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_ojt80")
+
+[node name="Line2D" type="Line2D" parent="Paths/Path2D"]
+points = PackedVector2Array(113, 198, 196.25, 230.625, 261.5, 261.703, 288.711, 278.104, 299.548, 286.165, 308, 294, 309.706, 296.007, 311.265, 298.178, 312.682, 300.508, 313.962, 302.99, 316.132, 308.383, 317.818, 314.307, 319.903, 327.537, 320.547, 342.266, 315.375, 407.875, 312.795, 438.893, 312.67, 452.504, 313.766, 464.297, 314.875, 469.382, 316.414, 473.858, 317.357, 475.85, 318.424, 477.671, 319.619, 479.314, 320.947, 480.771, 322.414, 482.038, 324.025, 483.106, 325.785, 483.97, 327.698, 484.624, 329.772, 485.06, 332.01, 485.272, 334.417, 485.254, 337, 485, 361.9, 479.463, 392.578, 469.203, 463.625, 436.625, 500.174, 415.361, 534.859, 391.484, 565.771, 365.521, 579.216, 351.923, 591, 338, 593.847, 334.701, 596.943, 331.829, 600.281, 329.37, 603.849, 327.314, 607.638, 325.647, 611.64, 324.359, 615.844, 323.437, 620.242, 322.869, 624.824, 322.643, 629.58, 322.748, 639.577, 323.9, 650.159, 326.23, 661.25, 329.641, 684.657, 339.324, 709.195, 352.186, 759.25, 384.375, 884, 487)
+width = 30.0
+default_color = Color(0.682353, 0.960784, 0.384314, 1)
+script = ExtResource("1_l0nr8")
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_cl3da")
+
+[node name="Line2D" type="Line2D" parent="Paths/Path2D2"]
+points = PackedVector2Array(114, 197, 348, 303, 357.562, 305.639, 366.478, 307.01, 374.863, 307.219, 382.83, 306.371, 390.491, 304.57, 397.96, 301.923, 412.775, 294.509, 445.083, 274.143, 464.388, 262.873, 487, 252, 498.897, 246.062, 510.021, 238.8, 520.372, 230.448, 529.952, 221.244, 546.799, 201.218, 560.568, 180.606, 578.901, 145.165, 585, 130)
+width = 30.0
+default_color = Color(0.682353, 0.960784, 0.384314, 1)
+script = ExtResource("1_l0nr8")
+
+[node name="Path2D3" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_3dg0m")
+
+[node name="Line2D" type="Line2D" parent="Paths/Path2D3"]
+points = PackedVector2Array(114, 199, 329, 294, 355.463, 304.527, 364.295, 308.142, 368.393, 309.234, 370.461, 309.563, 372.578, 309.734, 374.773, 309.734, 377.073, 309.554, 382.101, 308.608, 387.887, 306.81, 394.654, 304.073, 436, 282, 518.551, 237.216, 537.641, 230.701, 559.713, 225.384, 620, 217, 660.436, 215.223, 705.116, 216.81, 795.325, 226.22, 896, 243)
+width = 30.0
+default_color = Color(0.682353, 0.960784, 0.384314, 1)
+script = ExtResource("1_l0nr8")
+
+[node name="LevelObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_dlj3h")
+objects1 = Array[PackedScene]([ExtResource("12_vccdc"), ExtResource("13_inhw5"), ExtResource("14_hn5dx"), ExtResource("15_iecrn"), ExtResource("3_w5jwq")])
+objects2 = Array[PackedScene]([ExtResource("4_jg1pg"), ExtResource("5_mlv06"), ExtResource("6_icnqj"), ExtResource("7_ku830"), ExtResource("8_ok7on")])
+objects3 = Array[PackedScene]([ExtResource("9_1g167"), ExtResource("16_fur6k")])
+objects4 = Array[PackedScene]([ExtResource("11_8sv34")])
+objects5 = Array[PackedScene]([ExtResource("10_pnj43")])
+
+[node name="ClearArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearArea"]
+position = Vector2(-28, 63)
+shape = SubResource("CircleShape2D_bltb0")
+
+[node name="Gate" type="Node2D" parent="."]
+position = Vector2(151, 198)
+script = ExtResource("19_qromv")
+
+[node name="GateSprite" parent="Gate" instance=ExtResource("19_fee1c")]
+scale = Vector2(0.271361, 0.271361)
+
+[node name="Area2D" type="Area2D" parent="Gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
+position = Vector2(-28, -1)
+shape = SubResource("CircleShape2D_gi28g")
+
+[connection signal="timeout" from="SpawnPath/Timer" to="SpawnPath" method="_on_timer_timeout"]

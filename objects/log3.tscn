@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://unmus0ceed5q"]
 
-[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_io434"]
+[ext_resource type="Texture2D" uid="uid://cwfek0bwmrwvx" path="res://graphics/obstacles.svg" id="1_s285a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn0re"]
 size = Vector2(251.933, 62.0406)
@@ -15,6 +15,6 @@ shape = SubResource("RectangleShape2D_vn0re")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
-texture = ExtResource("1_io434")
+texture = ExtResource("1_s285a")
 region_enabled = true
 region_rect = Rect2(515.767, 29.5884, 255.447, 185.78)

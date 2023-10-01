@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://baveohy1c7wdb"]
+
+[ext_resource type="Script" path="res://Gate.gd" id="1_cohdm"]
+[ext_resource type="Texture2D" uid="uid://ddjy2wsia8xyl" path="res://graphics/infra.svg" id="2_316o7"]
+
+[node name="Gate" type="Node2D"]
+script = ExtResource("1_cohdm")
+
+[node name="SpriteClosed" type="Sprite2D" parent="."]
+texture = ExtResource("2_316o7")
+region_enabled = true
+region_rect = Rect2(33.179, 23.2656, 288.165, 316.696)
+
+[node name="SpriteOpen" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_316o7")
+region_enabled = true
+region_rect = Rect2(425.531, 20.8341, 285.312, 328.109)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
