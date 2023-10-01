@@ -50,19 +50,17 @@ script = ExtResource("1_rtd73")
 molotovScene = ExtResource("2_kiepm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+position = Vector2(-0.272727, 4.76837e-07)
+scale = Vector2(0.127273, 0.127273)
 texture = ExtResource("1_6oqut")
 region_enabled = true
-region_rect = Rect2(123.832, 132.005, 122.271, 94.1228)
+region_rect = Rect2(49.8348, 101.81, 185.777, 110.555)
 
 [node name="EnemyArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 position = Vector2(0, 7.04)
 shape = SubResource("CircleShape2D_4e010")
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 8, 0, 16)
 
 [node name="EnemyBody" type="StaticBody2D" parent="."]
 

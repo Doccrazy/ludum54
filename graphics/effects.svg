@@ -25,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.0888418"
-     inkscape:cx="356.89634"
-     inkscape:cy="236.01595"
+     inkscape:zoom="1.4770342"
+     inkscape:cx="406.55794"
+     inkscape:cy="366.95155"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="1912"
@@ -196,5 +196,61 @@
        inkscape:export-filename="shockwave.png"
        inkscape:export-xdpi="279.7962"
        inkscape:export-ydpi="279.7962" />
+    <text
+       xml:space="preserve"
+       style="font-size:33.8667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;fill:#00ff00;fill-opacity:1;stroke-width:10;stroke-dasharray:none"
+       x="29.0193"
+       y="97.089272"
+       id="text63048"
+       inkscape:export-filename="happyFace.png"
+       inkscape:export-xdpi="91.19101"
+       inkscape:export-ydpi="91.19101"><tspan
+         sodipodi:role="line"
+         id="tspan63046"
+         style="fill:#00ff00;stroke-width:10"
+         x="29.0193"
+         y="97.089272">😃</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:33.8667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;fill:#ffff00;fill-opacity:1;stroke-width:10;stroke-dasharray:none"
+       x="82.042221"
+       y="108.91194"
+       id="text63154"
+       inkscape:export-filename="smileFace.png"
+       inkscape:export-xdpi="91.19101"
+       inkscape:export-ydpi="91.19101"><tspan
+         sodipodi:role="line"
+         id="tspan63152"
+         style="fill:#ffff00;stroke-width:10"
+         x="82.042221"
+         y="108.91194">🙂</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:33.8667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;text-anchor:middle;fill:#ff7f2a;fill-opacity:1;stroke-width:10;stroke-dasharray:none"
+       x="130.9451"
+       y="104.97105"
+       id="text63158"
+       inkscape:export-filename="worriedFace.png"
+       inkscape:export-xdpi="91.19101"
+       inkscape:export-ydpi="91.19101"><tspan
+         sodipodi:role="line"
+         id="tspan63156"
+         style="fill:#ff7f2a;stroke-width:10"
+         x="130.9451"
+         y="104.97105">🤨</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.8667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke-width:10;stroke-dasharray:none"
+       x="171.78708"
+       y="70.398666"
+       id="text63162"
+       inkscape:export-filename="angryFace.png"
+       inkscape:export-xdpi="97.717598"
+       inkscape:export-ydpi="97.717598"><tspan
+         sodipodi:role="line"
+         id="tspan63160"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:10;fill:#ff0000"
+         x="171.78708"
+         y="70.398666">😡</tspan></text>
   </g>
 </svg>

@@ -23,3 +23,4 @@ func ignite():
 func extinguish():
 	if fireObj:
 		fireObj.queue_free()
+		fireObj = null
