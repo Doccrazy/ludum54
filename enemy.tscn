@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://naombmq55b7i"]
+[gd_scene load_steps=16 format=3 uid="uid://naombmq55b7i"]
 
 [ext_resource type="Texture2D" uid="uid://dgyyitmg5j7ww" path="res://graphics/characters.svg" id="1_6oqut"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_rtd73"]
+[ext_resource type="PackedScene" uid="uid://bs63m2cdq0u2d" path="res://molotov.tscn" id="2_kiepm"]
 [ext_resource type="Script" path="res://healthBar.gd" id="3_qvtot"]
 [ext_resource type="Texture2D" uid="uid://fmmntaca5p2v" path="res://graphics/happyFace.png" id="4_srcjr"]
 [ext_resource type="Texture2D" uid="uid://c2df5tbkl364s" path="res://graphics/smileFace.png" id="5_7kgoa"]
@@ -43,6 +44,7 @@ color_ramp = SubResource("GradientTexture1D_vsort")
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_rtd73")
+molotovScene = ExtResource("2_kiepm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -89,6 +91,9 @@ one_shot = true
 [node name="TentTimer" type="Timer" parent="."]
 
 [node name="TrashTimer" type="Timer" parent="."]
+
+[node name="MolotovTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="HappyParticle" type="GPUParticles2D" parent="."]
 top_level = true
@@ -147,3 +152,4 @@ update_scale = false
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="timeout" from="TentTimer" to="." method="_on_tent_timer_timeout"]
 [connection signal="timeout" from="TrashTimer" to="." method="_on_trash_timer_timeout"]
+[connection signal="timeout" from="MolotovTimer" to="." method="_on_molotov_timer_timeout"]

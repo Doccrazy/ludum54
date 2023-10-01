@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://2uylqnopgbre"]
+
+[ext_resource type="Texture2D" uid="uid://d3udfhc3g5dgy" path="res://graphics/smokeParticle.png" id="1_bh4pe"]
+
+[sub_resource type="Gradient" id="Gradient_vqomb"]
+offsets = PackedFloat32Array(0, 0.155556, 0.451852, 1)
+colors = PackedColorArray(1, 0.513726, 0.231373, 0, 1, 0.761667, 0.35, 0.67451, 1, 0.149333, 0.12, 0.811765, 1, 0.14902, 0.121569, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q26mq"]
+gradient = SubResource("Gradient_vqomb")
+
+[sub_resource type="Curve" id="Curve_nfb6p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.473684), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_my5j1"]
+curve = SubResource("Curve_nfb6p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xi7e4"]
+emission_shape = 1
+emission_sphere_radius = 20.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -45.5
+angle_max = 136.4
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_my5j1")
+color_ramp = SubResource("GradientTexture1D_q26mq")
+
+[node name="Explosion" type="Node2D"]
+
+[node name="FireParticles2D" type="GPUParticles2D" parent="."]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_xi7e4")
+texture = ExtResource("1_bh4pe")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.65

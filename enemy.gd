@@ -5,6 +5,7 @@ const WANDER_SPEED = 20
 const WAIT_ANGER = 10
 const TENT_PROBABILITY = 0.1 # per second after arriving at destination
 const TRASH_PROBABILITY = 0.1 # per second after placing tent
+const MOLOTOV_PROBABILITY = 0.1 # per second when unhappy
 
 var progressPixels: float = 0
 var destinationPixels: float
@@ -20,6 +21,7 @@ var tentPlaced = false
 var tentScene: PackedScene
 var trashScene: PackedScene
 
+@export var molotovScene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +45,7 @@ func _process(delta):
 	$SmileParticle.emitting = happiness <= 80 && happiness > 50
 	$WorriedParticle.emitting = happiness <= 50 && happiness > 20
 	$AngryParticle.emitting = happiness <= 20
+	$MolotovTimer.paused = happiness > 20
 
 func initialize(start: Transform2D, spawnPath: Path2D, mainPath: Path2D, wanderArea: Polygon2D, tent: PackedScene, trash: PackedScene):
 	transform = start
@@ -103,6 +106,13 @@ func _on_trash_timer_timeout():
 	if randf() < TRASH_PROBABILITY:
 		placeTrash()
 
+func _on_molotov_timer_timeout():
+	if randf() < MOLOTOV_PROBABILITY:
+		var molotov = molotovScene.instantiate()
+		molotov.position = global_position
+		molotov.linear_velocity = Vector2.from_angle(randf_range(0, 2*PI)) * 100
+		get_tree().root.add_child(molotov)
+		
 func lockIn():
 	isLockedIn = true
 	visible = false
@@ -110,3 +120,5 @@ func lockIn():
 func releaseLock():
 	isLockedIn = false
 	visible = true
+
+

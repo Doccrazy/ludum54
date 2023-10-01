@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs63m2cdq0u2d"]
+
+[ext_resource type="Script" path="res://Molotov.gd" id="1_givcj"]
+[ext_resource type="PackedScene" uid="uid://2uylqnopgbre" path="res://effects/explosion.tscn" id="2_c0t7m"]
+[ext_resource type="Texture2D" uid="uid://dgyyitmg5j7ww" path="res://graphics/characters.svg" id="2_vc0mr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmvaj"]
+radius = 15.0
+
+[node name="Molotov" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_givcj")
+explosionScene = ExtResource("2_c0t7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.0859873, 0.0859873)
+texture = ExtResource("2_vc0mr")
+region_enabled = true
+region_rect = Rect2(377.927, 9.63582, 314.782, 338.207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gmvaj")
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
