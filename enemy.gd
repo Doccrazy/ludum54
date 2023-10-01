@@ -4,6 +4,7 @@ const PATH_SPEED = 100
 const WANDER_SPEED = 20
 const WAIT_ANGER = 10
 const TENT_PROBABILITY = 0.1 # per second after arriving at destination
+const TRASH_PROBABILITY = 0.1 # per second after placing tent
 
 var progressPixels: float = 0
 var destinationPixels: float
@@ -13,8 +14,10 @@ var collisionCount = 0
 var pathDone = false
 var happiness: float = 100
 var wandering = false
+var wanderArea: Polygon2D
 var tentPlaced = false
 var tentScene: PackedScene
+var trashScene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,14 +35,16 @@ func _process(delta):
 		happiness -= WAIT_ANGER*delta
 	if destinationPixels && progressPixels > destinationPixels && !wandering:
 		startRandomWander()
-	if wandering:
+	if wandering && Geometry2D.is_point_in_polygon(position + Vector2(0, -WANDER_SPEED * 1.0).rotated(rotation), wanderArea.polygon):
 		translate(Vector2(0, -WANDER_SPEED * delta).rotated(rotation))
 
-func initialize(start: Transform2D, spawnPath: Path2D, mainPath: Path2D, tent: PackedScene):
+func initialize(start: Transform2D, spawnPath: Path2D, mainPath: Path2D, wanderArea: Polygon2D, tent: PackedScene, trash: PackedScene):
 	transform = start
 	currentPath = spawnPath
 	nextPath = mainPath
+	self.wanderArea = wanderArea
 	tentScene = tent
+	trashScene = trash
 
 func proceedIn():
 	progressPixels = nextPath.curve.get_closest_offset(position)
@@ -60,11 +65,18 @@ func startRandomWander():
 func placeTent():
 	tentPlaced = true
 	$TentTimer.stop()
+	$TrashTimer.start()
 	var tent = tentScene.instantiate()
 	tent.position = position
 	tent.scale = Vector2(randf_range(0.15, 0.25), randf_range(0.15, 0.25))
 	get_parent().add_child(tent)
 	
+func placeTrash():
+	var trash = trashScene.instantiate()
+	trash.position = position
+	trash.scale = Vector2(randf_range(0.15, 0.25), randf_range(0.15, 0.25))
+	get_parent().add_child(trash)
+
 func _on_collider_body_entered(body):
 	if body != get_node("StaticBody2D"):
 		collisionCount += 1
@@ -79,3 +91,8 @@ func _on_wander_timer_timeout():
 func _on_tent_timer_timeout():
 	if randf() < TENT_PROBABILITY:
 		placeTent()
+
+
+func _on_trash_timer_timeout():
+	if randf() < TRASH_PROBABILITY:
+		placeTrash()

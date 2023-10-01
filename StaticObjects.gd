@@ -6,6 +6,7 @@ extends Node2D
 @export var objects4: Array[PackedScene]
 @export var objects5: Array[PackedScene]
 @export var tents: Array[PackedScene]
+@export var trash: PackedScene
 
 const MAX_COORD = pow(2,31)-1
 const MIN_COORD = -MAX_COORD

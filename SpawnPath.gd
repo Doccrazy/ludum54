@@ -19,5 +19,6 @@ func _on_timer_timeout():
 		var start = curve.sample_baked_with_rotation(0)
 		var mainPaths = get_node("../Paths").get_children()
 		var tents = get_node("../LevelObjects").tents
-		enemy.initialize(start, self, mainPaths[randi_range(0, mainPaths.size() - 1)], tents[randi_range(0, tents.size() - 1)])
+		var trash = get_node("../LevelObjects").trash
+		enemy.initialize(start, self, mainPaths[randi_range(0, mainPaths.size() - 1)], get_node("../GroundPoly"), tents[randi_range(0, tents.size() - 1)], trash)
 		get_node("../LevelObjects").add_child(enemy)
