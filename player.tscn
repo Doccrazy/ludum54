@@ -37,13 +37,22 @@ script = ExtResource("1_i3r2i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nxsom")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(6, 0)
 rotation = -1.5708
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_ypg1l")
 region_enabled = true
-region_rect = Rect2(50.0083, 247.45, 190.333, 181.548)
+region_rect = Rect2(48.1798, 246.782, 190.974, 109.128)
+
+[node name="SpriteAttack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 0)
+rotation = -1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ypg1l")
+region_enabled = true
+region_rect = Rect2(50.1285, 373.449, 187.077, 140.308)
 
 [node name="ActionArea" type="Area2D" parent="."]
 
@@ -62,3 +71,9 @@ texture = ExtResource("3_hesj7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
 position = Vector2(47, 0)
 shape = SubResource("RectangleShape2D_y7tsr")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
